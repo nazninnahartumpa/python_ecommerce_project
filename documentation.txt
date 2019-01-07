@@ -1,0 +1,3 @@
+1. get_user_model() this is used for customize djnago authentications for registration of user.
+2.Image upload shuld be completed.
+3.requested.authenticated_user problem shuld be solved. 

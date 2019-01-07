@@ -1,0 +1,20 @@
+{% extends 'layoutes/master.html' %}
+
+{% block title %} Products_list {% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			
+			{%  for obj in object_list %}
+			<div class="col-md-4">
+				{% include 'products/snippets/card.html' with instance=obj %}
+				</div>
+			{% endfor %}
+
+			
+		</div>
+	</div>
+
+
+{% endblock %}

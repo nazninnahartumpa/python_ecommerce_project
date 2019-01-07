@@ -1,0 +1,17 @@
+{% extends 'layoutes/master.html' %}
+
+{% block title %} Products_detail {% endblock %}
+
+{% block body %}
+	<div class="container">
+		
+		<h4>Product title</h4><p>{{ object.title}}</p><br/>
+		<h4>Product description</h4><p>{{ object.description }}</p><br/>
+		<h4>Product prise</h4><p>{{ object.price }}</p><br/>
+		{% if object.image %}
+		<img src="{{ object.image.url }}" alt="product_image" width="200px" height="200px" />
+		{% endif %}
+
+	</div>
+
+{% endblock %}

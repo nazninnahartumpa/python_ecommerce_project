@@ -1,0 +1,40 @@
+{% url 'test_app:index' as home_url %}
+{% url 'test_app:contact' as contact_url %}
+{% url 'products:products' as products_url %}
+{% url 'test_app:login' as login_url %}
+{% url 'test_app:register' as register_url %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{ home_url }}">{% if brand_name %} {{ brand_name }} {% else %} Bran_Name {% endif %}</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% if request.path == home_url %} active {% endif %}">
+        <a class="nav-link" href="{{ home_url }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item {% if request.path == contact_url %} active {% endif %}">
+        <a class="nav-link" href="{{ contact_url }}">Contact</a>
+      </li>
+      <li class="nav-item {% if request.path == products_url %} active {% endif %}">
+        <a class="nav-link" href="{{ products_url }}" tabindex="-1" aria-disabled="true">Products</a>
+      </li>
+      {% if request.user.is_authenticated %}
+      <li class="nav-item {% if request.path == login_url %} active {% endif %}">
+        <a class="nav-link" href="{{ login_url }}">Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item {% if request.path == register_url %} active {% endif %}">
+        <a class="nav-link" href="{{ register_url }}">Register</a>
+      </li>
+      <li class="nav-item {% if request.path == login_url %} active {% endif %}">
+        <a class="nav-link" href="{{ login_url }}">Login</a>
+      </li>
+      {% endif %}
+    </ul>
+    {% include 'products/snippets/search_form.html' %}
+     
+  </div>
+</nav>

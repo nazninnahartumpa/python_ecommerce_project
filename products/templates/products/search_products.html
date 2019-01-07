@@ -1,0 +1,27 @@
+{% extends 'layoutes/master.html' %}
+
+{% block title %} Products_list {% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			{% if query %}
+			<div class="col-12 mb-3">
+				Searched For {{ query }}
+				<hr/>
+			</div>
+
+			{% endif %}
+			
+			{%  for obj in object_list %}
+			<div class="col-md-4">
+				{% include 'products/snippets/card.html' with instance=obj %}
+				</div>
+			{% endfor %}
+
+			
+		</div>
+	</div>
+
+
+{% endblock %}
