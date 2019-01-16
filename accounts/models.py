@@ -47,6 +47,7 @@ class User(AbstractBaseUser):
     timestamp   = models.DateTimeField(default=timezone.now)
     #confirm_email = models.BooleanField(default=False)
     # confirm_date = models.DateTimeField(default=False) 
+    objects = UserManager()
 
     USERNAME_FIELD = 'email'
     #USERNAME_FIELD and password field is required by default
@@ -60,6 +61,12 @@ class User(AbstractBaseUser):
 
     def get_short_name(self):
         return self.email
+
+    def has_perm(self, perm, obj=None):
+        return True
+
+    def has_module_perms(self, app_label):
+        return True
 
     @property
     def is_staff(self):
