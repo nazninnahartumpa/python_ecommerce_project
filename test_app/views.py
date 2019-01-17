@@ -69,7 +69,7 @@ class LoginPage(View):
 			if user is not None:
 				login(request, user)
 				
-				return redirect("/login")
+				return redirect("/")
 			else:
 				print("error!")
 
